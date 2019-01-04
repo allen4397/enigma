@@ -13,7 +13,7 @@ class KeyGeneratorTest < Minitest::Test
   def test_it_can_create_five_random_digits
     actual = KeyGenerator.generate
 
-    assert_instance_of Integer, actual
-    assert_equal 5, actual.to_s.length
+    assert_instance_of String, actual
+    assert_equal 5, actual.length
   end
 end
