@@ -9,4 +9,11 @@ class KeyGeneratorTest < Minitest::Test
 
     assert_instance_of KeyGenerator, key_generator
   end
+
+  def test_it_can_create_five_random_digits
+    actual = KeyGenerator.generate
+
+    assert_instance_of Integer, actual
+    assert_equal 5, actual.to_s.length
+  end
 end
