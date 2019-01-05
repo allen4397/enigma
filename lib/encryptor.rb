@@ -1,3 +1,5 @@
+require 'pry'
+
 class Encryptor
   attr_reader :characters
 
@@ -66,7 +68,7 @@ class Encryptor
 
   def shift_b(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
-      if ind - 1 % 4 == 0
+      if (ind - 1) % 4 == 0
         new_index = adjust_index(char, shifts[:B])
         char = @characters[new_index]
       else
