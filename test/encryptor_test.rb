@@ -23,6 +23,19 @@ class EncryptorTest < Minitest::Test
     assert_equal expected, encryptor.transform_key("02715")
   end
 
+  def test_it_can_transform_a_date_into_a_hash_of_lettered_offsets
+    encryptor = Encryptor.new
+
+    expected = {
+      A: 1,
+      B: 0,
+      C: 2,
+      D: 5
+    }
+
+    assert_equal expected, encryptor.transform_date("040895")
+  end
+
   def test_it_can_encrypt_a_message
     skip
     actual = Encryptor.encrypt("hello world", "02715", "040895")
