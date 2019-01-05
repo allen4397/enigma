@@ -9,4 +9,10 @@ class EncryptorTest < Minitest::Test
 
     assert_instance_of Encryptor, encryptor
   end
+
+  def test_it_can_encrypt_a_message
+    actual = Encryptor.encrypt("hello world", "02715", "040895")
+
+    assert_equal "keder ohulw", actual
+  end
 end
