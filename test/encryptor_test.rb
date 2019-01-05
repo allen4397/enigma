@@ -64,7 +64,6 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_shift_a_characters
-    skip
     encryptor = Encryptor.new
     shifts = encryptor.create_shifts("02715", "040895")
 

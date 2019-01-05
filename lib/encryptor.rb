@@ -53,6 +53,8 @@ class Encryptor
           new_index -= 27
         end
         char = @characters[new_index]
+      else
+        char
       end
     end.join
   end
