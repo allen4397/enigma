@@ -43,6 +43,14 @@ class Encryptor
     # returns encrypted message
   end
 
+  def adjust_index(cypher_index, shift)
+    index = cypher_index + shift
+    while index > 26
+      index -= 27
+    end
+    index
+  end
+
   def shift_a(message, shifts)
     message_characters = message.chars
     message_characters.map.with_index do |char, ind|
