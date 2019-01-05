@@ -77,6 +77,17 @@ class Encryptor
     end.join
   end
 
+  def shift_c(message_characters, shifts)
+    message_characters.map.with_index do |char, ind|
+      if (ind - 2) % 4 == 0
+        new_index = adjust_index(char, shifts[:C])
+        char = @characters[new_index]
+      else
+        char
+      end
+    end.join
+  end
+
   def create_shifts(key, date)
     keys = transform_key(key)
     offsets = transform_date(date)
