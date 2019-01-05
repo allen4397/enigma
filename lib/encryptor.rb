@@ -8,7 +8,8 @@ class Encryptor
   def self.encrypt(message, key, date)
     # CEO method
     encryptor = Encryptor.new
-    shifts = encryptor.create_shifts(key, date)
+    shifts = encryptor.create_shifts(key, date)    
+    message_characters = message.chars
     shifted_a = encryptor.shift_a()
     # test = message_characters.map.with_index do |char, ind|
     #   cypher_index = characters.find_index(char)
@@ -51,15 +52,11 @@ class Encryptor
     index
   end
 
-  def shift_a(message, shifts)
-    message_characters = message.chars
+  def shift_a(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
       cypher_index = @characters.find_index(char)
       if ind % 4 == 0
-        new_index = cypher_index + shifts[:A]
-        while new_index > 26
-          new_index -= 27
-        end
+        new_index = adjust_index(cypher_index, shifts[:A])
         char = @characters[new_index]
       else
         char
