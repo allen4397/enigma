@@ -14,10 +14,10 @@ class EncryptorTest < Minitest::Test
     encryptor = Encryptor.new
 
     expected = {
-      A: "02",
-      B: "27",
-      C: "71",
-      D: "15"
+      A: 02,
+      B: 27,
+      C: 71,
+      D: 15
     }
 
     assert_equal expected, encryptor.transform_key("02715")
@@ -27,10 +27,10 @@ class EncryptorTest < Minitest::Test
     encryptor = Encryptor.new
 
     expected = {
-      A: "1",
-      B: "0",
-      C: "2",
-      D: "5"
+      A: 1,
+      B: 0,
+      C: 2,
+      D: 5
     }
 
     assert_equal expected, encryptor.transform_date("040895")
