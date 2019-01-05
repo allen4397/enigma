@@ -74,9 +74,8 @@ class EncryptorTest < Minitest::Test
     encryptor = Encryptor.new
     shifts = encryptor.create_shifts("02715", "040895")
     message = "hello world"
-    message_characters = message.chars
 
-    assert_equal "kellr would", encryptor.shift_a(message_characters, shifts)
+    assert_equal "kellr would", encryptor.shift_a(message.chars, shifts)
   end
 
   def test_it_can_shift_b_characters
@@ -85,31 +84,27 @@ class EncryptorTest < Minitest::Test
     # resetting the B shift to ensure proper testing
     shifts[:B] = 28
     message = "kellr would"
-    message_characters = message.chars
 
-    assert_equal "kfllrawoumd", encryptor.shift_b(message_characters, shifts)
+    assert_equal "kfllrawoumd", encryptor.shift_b(message.chars, shifts)
   end
 
   def test_it_can_shift_c_characters
     encryptor = Encryptor.new
     shifts = encryptor.create_shifts("02715", "040895")
     message = "kellr would"
-    message_characters = message.chars
 
-    assert_equal "kedlr ooulw", encryptor.shift_c(message_characters, shifts)
+    assert_equal "kedlr ooulw", encryptor.shift_c(message.chars, shifts)
   end
 
   def test_it_can_shift_d_characters
     encryptor = Encryptor.new
     shifts = encryptor.create_shifts("02715", "040895")
     message = "kedlr ooulw"
-    message_characters = message.chars
 
-    assert_equal "keder ohulw", encryptor.shift_d(message_characters, shifts)
+    assert_equal "keder ohulw", encryptor.shift_d(message.chars, shifts)
   end
 
   def test_it_can_encrypt_a_message
-    skip
     actual = Encryptor.encrypt("hello world", "02715", "040895")
 
     assert_equal "keder ohulw", actual
