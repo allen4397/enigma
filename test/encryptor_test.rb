@@ -10,7 +10,21 @@ class EncryptorTest < Minitest::Test
     assert_instance_of Encryptor, encryptor
   end
 
+  def test_it_can_transform_a_key_into_a_hash_of_lettered_keys
+    encryptor = Encryptor.new
+
+    expected = {
+      A: "02",
+      B: "27",
+      C: "71",
+      D: "15"
+    }
+
+    assert_equal expected, encryptor.transform_key("02715")
+  end
+
   def test_it_can_encrypt_a_message
+    skip
     actual = Encryptor.encrypt("hello world", "02715", "040895")
 
     assert_equal "keder ohulw", actual
