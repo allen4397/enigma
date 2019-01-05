@@ -42,6 +42,19 @@ class EncryptorTest < Minitest::Test
     assert_equal "1025", encryptor.extract_offsets("040895")
   end
 
+  def test_it_can_synthesize_final_shifts_from_keys_and_offsets
+    encryptor = Encryptor.new
+
+    expected = {
+      A: 3,
+      B: 27,
+      C: 73,
+      D: 20
+    }
+
+    assert_equal expected, encryptor.create_shifts("02715", "040895")
+  end
+
   def test_it_can_encrypt_a_message
     skip
     actual = Encryptor.encrypt("hello world", "02715", "040895")

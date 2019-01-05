@@ -2,7 +2,7 @@ class Encryptor
   def self.encrypt(message, key, date)
     # CEO method
     hash_of_keys = transform_key(key)
-    # date turns into ABCD offsets
+    hash_of_offsets = transform_date(date)
     # shift_synthesis turns keys and offsets into final shift
     # final shift ABCD operates on message
     # returns encrypted message
