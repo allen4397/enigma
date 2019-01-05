@@ -10,6 +10,14 @@ class EncryptorTest < Minitest::Test
     assert_instance_of Encryptor, encryptor
   end
 
+  def test_it_starts_with_array_of_characters_of_alphabet
+    encryptor = Encryptor.new
+
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+
+    assert_equal expected, encryptor.characters
+  end
+
   def test_it_can_transform_a_key_into_a_hash_of_lettered_keys
     encryptor = Encryptor.new
 
@@ -56,6 +64,7 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_shift_a_characters
+    skip
     encryptor = Encryptor.new
     shifts = encryptor.create_shifts("02715", "040895")
 
