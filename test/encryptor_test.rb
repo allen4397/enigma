@@ -55,6 +55,13 @@ class EncryptorTest < Minitest::Test
     assert_equal expected, encryptor.create_shifts("02715", "040895")
   end
 
+  def test_it_can_shift_a_characters
+    encryptor = Encryptor.new
+    shifts = encryptor.create_shifts("02715", "040895")
+
+    assert_equal "kellr would", encryptor.shift_a("hello world", shifts)
+  end
+
   def test_it_can_encrypt_a_message
     skip
     actual = Encryptor.encrypt("hello world", "02715", "040895")
