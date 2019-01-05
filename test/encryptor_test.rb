@@ -27,13 +27,19 @@ class EncryptorTest < Minitest::Test
     encryptor = Encryptor.new
 
     expected = {
-      A: 1,
-      B: 0,
-      C: 2,
-      D: 5
+      A: "1",
+      B: "0",
+      C: "2",
+      D: "5"
     }
 
     assert_equal expected, encryptor.transform_date("040895")
+  end
+
+  def test_it_can_extract_offsets_from_date
+    encryptor = Encryptor.new
+
+    assert_equal 1025, encryptor.extract_offsets_from_date("040895")
   end
 
   def test_it_can_encrypt_a_message
