@@ -67,7 +67,7 @@ class EncryptorTest < Minitest::Test
     encryptor = Encryptor.new
     shifts = encryptor.create_shifts("02715", "040895")
 
-    assert_equal 2, encryptor.adjust_index(26, shifts[:A])
+    assert_equal 2, encryptor.adjust_index(" ", shifts[:A])
   end
 
   def test_it_can_shift_a_characters
