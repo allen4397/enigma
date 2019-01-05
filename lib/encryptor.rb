@@ -16,4 +16,15 @@ class Encryptor
       D: key[3..4]
     }
   end
+
+  def transform_date(date)
+    squared_form = date.to_i ** 2
+    last_four_digits = squared_form.digits.first(4).reverse.join
+    {
+      A: last_four_digits[0],
+      B: last_four_digits[1],
+      C: last_four_digits[2],
+      D: last_four_digits[3]
+    }
+  end
 end
