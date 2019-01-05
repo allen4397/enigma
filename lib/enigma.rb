@@ -1,7 +1,11 @@
+require_relative 'encryptor'
+
 class Enigma
   def encrypt(message, key, date)
-    encryption = {key: key, date: date}
-    # set message key to encrypted message value
-    return encryption
+    {
+      message: Encryptor.encrypt(message),
+      key: key,
+      date: date
+    }
   end
 end
