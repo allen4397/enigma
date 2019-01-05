@@ -18,13 +18,20 @@ class Encryptor
   end
 
   def transform_date(date)
-    squared_form = date.to_i ** 2
-    last_four_digits = squared_form.digits.first(4).reverse.join
+    last_four_digits = extract_offsets(date)
     {
       A: last_four_digits[0],
       B: last_four_digits[1],
       C: last_four_digits[2],
       D: last_four_digits[3]
     }
+  end
+
+  def extract_offsets(date)
+    squared_form = date.to_i ** 2
+    all_digits_backwards = squared_form.digits
+    extracted_digits_backwards = all_digits_backwards.first(4)
+    extracted_digits = extracted_digits_backwards.reverse
+    extracted_digits.join
   end
 end

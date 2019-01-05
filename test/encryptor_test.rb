@@ -39,7 +39,7 @@ class EncryptorTest < Minitest::Test
   def test_it_can_extract_offsets_from_date
     encryptor = Encryptor.new
 
-    assert_equal 1025, encryptor.extract_offsets_from_date("040895")
+    assert_equal "1025", encryptor.extract_offsets("040895")
   end
 
   def test_it_can_encrypt_a_message
