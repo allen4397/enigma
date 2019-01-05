@@ -63,6 +63,13 @@ class EncryptorTest < Minitest::Test
     assert_equal expected, encryptor.create_shifts("02715", "040895")
   end
 
+  def test_it_can_adjust_index_to_fit_parameters
+    encryptor = Encryptor.new
+    shifts = encryptor.create_shifts("02715", "040895")
+
+    assert_equal 2, encryptor.adjust_index(26, shifts)
+  end
+
   def test_it_can_shift_a_characters
     encryptor = Encryptor.new
     shifts = encryptor.create_shifts("02715", "040895")
