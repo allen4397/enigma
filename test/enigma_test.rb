@@ -54,4 +54,11 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, enigma.decrypt(encryption[:encryption], "02715")
   end
+
+  def test_it_can_encrypt_a_message_with_no_key_or_date
+    enigma = Enigma.new
+
+    assert_instance_of String, enigma.encrypt("hello world")
+    assert_equal 11, enigma.encrypt("hello world").length
+  end
 end
