@@ -3,7 +3,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/decryptor'
 
-class EncryptorTest < Minitest::Test
+class DecryptorTest < Minitest::Test
   def test_it_exists
     decryptor = Decryptor.new
 
