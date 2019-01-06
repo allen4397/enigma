@@ -11,7 +11,7 @@ class Enigma
     }
   end
 
-  def decrypt(encryption, key, date)
+  def decrypt(encryption, key, date = KeyGenerator.generate_date)
     {
       decryption: Decryptor.decrypt(encryption, key, date),
       key: key,
