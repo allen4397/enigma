@@ -1,13 +1,8 @@
 require_relative 'shift_manager'
+require_relative 'cypher_master'
 
-class Encryptor
+class Encryptor < CypherMaster
   include ShiftManager
-
-  attr_reader :characters
-
-  def initialize
-    @characters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-  end
 
   def self.encrypt(message, key, date)
     encryptor = Encryptor.new
