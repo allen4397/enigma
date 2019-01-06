@@ -1,4 +1,8 @@
+require_relative 'shift_manager'
+
 class CypherMaster
+  include ShiftManager
+
   attr_reader :characters
 
   def initialize

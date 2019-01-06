@@ -1,9 +1,6 @@
-require_relative 'shift_manager'
 require_relative 'cypher_master'
 
 class Decryptor < CypherMaster
-  include ShiftManager
-
   def self.decrypt(encryption, key, date)
     decryptor = Decryptor.new
     shifts = decryptor.create_shifts(key, date)

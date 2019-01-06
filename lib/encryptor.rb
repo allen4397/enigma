@@ -1,9 +1,6 @@
-require_relative 'shift_manager'
 require_relative 'cypher_master'
 
 class Encryptor < CypherMaster
-  include ShiftManager
-
   def self.encrypt(message, key, date)
     encryptor = Encryptor.new
     shifts = encryptor.create_shifts(key, date)
