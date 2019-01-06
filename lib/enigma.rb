@@ -8,4 +8,12 @@ class Enigma
       date: date
     }
   end
+
+  def decrypt(encryption, key, date)
+    {
+      decryption: Decryptor.decrypt(encryption, key, date),
+      key: key,
+      date: date
+    }
+  end
 end
