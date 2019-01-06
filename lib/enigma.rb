@@ -3,7 +3,7 @@ require_relative 'decryptor'
 require_relative 'key_generator'
 
 class Enigma
-  def encrypt(message, key, date = KeyGenerator.generate_date)
+  def encrypt(message, key = KeyGenerator.generate, date = KeyGenerator.generate_date)
     {
       encryption: Encryptor.encrypt(message, key, date),
       key: key,

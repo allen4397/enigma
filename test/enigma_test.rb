@@ -58,7 +58,11 @@ class EnigmaTest < Minitest::Test
   def test_it_can_encrypt_a_message_with_no_key_or_date
     enigma = Enigma.new
 
-    assert_instance_of String, enigma.encrypt("hello world")
-    assert_equal 11, enigma.encrypt("hello world").length
+    expected = KeyGenerator.generate_date
+
+    assert_instance_of Hash, enigma.encrypt("hello world")
+    assert_equal 11, enigma.encrypt("hello world")[:encryption].length
+    assert_equal 5, enigma.encrypt("hello world")[:key].length
+    assert_equal expected, enigma.encrypt("hello world")[:date]
   end
 end
