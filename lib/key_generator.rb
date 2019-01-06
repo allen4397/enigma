@@ -6,4 +6,7 @@ class KeyGenerator
     end
     array_of_digits.join
   end
+
+  def self.generate_date
+  end
 end
