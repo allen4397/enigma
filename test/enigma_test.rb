@@ -37,4 +37,12 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, actual
   end
+
+  def test_it_can_encrypt_a_message_with_just_a_key
+    enigma = Enigma.new
+
+    expected = enigma.encrypt("hello world", "02715", KeyGenerator.generate_date)
+
+    assert_equal expected, enigma.encrypt("hello world", "02715")
+  end
 end
