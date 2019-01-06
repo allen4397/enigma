@@ -9,4 +9,10 @@ class DecryptorTest < Minitest::Test
 
     assert_instance_of Decryptor, decryptor
   end
+
+  def test_it_can_decrypt_a_message
+    actual = Decryptor.decrypt("keder ohulw", "02715", "040895")
+
+    assert_equal "hello world", actual
+  end
 end
