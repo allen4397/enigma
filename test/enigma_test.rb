@@ -70,7 +70,7 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
 
     expected = {
-      decryption: "hello world",
+      decryption: "hello world end",
       date: "291018",
       key: "08304"
     }
