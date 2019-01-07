@@ -13,6 +13,10 @@ class CodeCracker < CypherMaster
   end
 
   def crack_challenge(encryption, date)
+    offsets = transform_date(date)
+    # shifts - offsets = keys
+    # construct key from keys
+    # return key
   end
 
   def quick_crack(encryption, date)

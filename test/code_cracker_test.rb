@@ -21,4 +21,11 @@ class CodeCrackerTest < Minitest::Test
 
     assert_equal "08304", code_cracker.quick_crack("vjqtbeaweqihssi", "291018")
   end
+
+  def test_it_can_perform_a_challenging_crack
+    code_cracker = CodeCracker.new
+
+    assert_equal String, code_cracker.crack_challenge
+    assert_equal 5, code_cracker.crack_challenge.length
+  end
 end
