@@ -10,10 +10,6 @@ class KeyGenerator
   end
 
   def self.generate_date
-    date = Date.today
-    day = date.mday.to_s.rjust(2, "0")
-    month = date.mon.to_s.rjust(2, "0")
-    year = date.year.to_s[2..3]
-    day + month + year
+    Date.today.strftime("%d%m%y")
   end
 end
