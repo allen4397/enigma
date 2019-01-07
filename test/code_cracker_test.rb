@@ -23,9 +23,20 @@ class CodeCrackerTest < Minitest::Test
   end
 
   def test_it_can_perform_a_challenging_crack
+    skip
     code_cracker = CodeCracker.new
 
-    assert_equal String, code_cracker.crack_challenge
-    assert_equal 5, code_cracker.crack_challenge.length
+    assert_equal String, code_cracker.crack_challenge("vjqtbeaweqihssi", KeyGenerator.generate_date)
+    assert_equal 5, code_cracker.crack_challenge("vjqtbeaweqihssi", KeyGenerator.generate_date).length
+  end
+
+  def test_it_can_build_keys_hash_with_shifts_and_offset
+    code_cracker = CodeCracker.new
+    shifts = {A: 6, B: 3, C: 10, D: 6}
+    offsets = code_cracker.transform_date(KeyGenerator.generate_date)
+
+    expected = {A: 2, B: 2, C: 4, D: 5}
+
+    assert_equal expected, code_cracker.key_builder(shifts, offsets)
   end
 end
