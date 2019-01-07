@@ -20,7 +20,7 @@ class Enigma
     }
   end
 
-  def crack(encryption, date)
+  def crack(encryption, date = KeyGenerator.generate_date)
     key = CodeCracker.find_key(encryption, date)
     {
       decryption: Decryptor.decrypt(encryption, key, date),
