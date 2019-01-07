@@ -18,4 +18,7 @@ class Enigma
       date: date
     }
   end
+
+  def crack(encryption, date)
+  end
 end

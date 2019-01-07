@@ -71,10 +71,10 @@ class EnigmaTest < Minitest::Test
 
     expected = {
       decryption: "hello world",
-      date: "040895",
-      key: "02715"
+      date: "291018",
+      key: "08304"
     }
 
-    assert_equal expected, enigma.crack("keder ohulw", "040895")
+    assert_equal expected, enigma.crack("vjqtbeaweqihssi", "291018")
   end
 end
