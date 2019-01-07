@@ -9,4 +9,10 @@ class CodeCrackerTest < Minitest::Test
 
     assert_instance_of CodeCracker, code_cracker
   end
+
+  def test_it_can_find_key_with_date_and_encryption
+    actual = CodeCracker.find_key("vjqtbeaweqihssi", "291018")
+
+    assert_equal "08304", actual
+  end
 end
