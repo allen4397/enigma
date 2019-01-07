@@ -18,4 +18,13 @@ class Enigma
       date: date
     }
   end
+
+  def crack(encryption, date)
+    key = CodeCracker.find_key(encryption, date)
+    {
+      decryption: Decryptor.decrypt(encryption, key, date),
+      date: date,
+      key: key
+    }
+  end
 end
