@@ -15,8 +15,8 @@ date = ARGV[2]
 
 # Pulling out the encryption and cracking it
 
-encryption = encrypted_file.read.chomp
-crack = enigma.crack(encryption, date)
+encrypted_message = encrypted_file.read.chomp
+crack = enigma.crack(encrypted_message, date)
 
 # Writing decrypted message in the file
 
@@ -28,4 +28,4 @@ cracked_file.write(crack[:decryption])
 cracked_file_name = ARGV[1]
 key = crack[:key]
 
-puts "Created #{cracked_file_name} with the key #{key} and date #{date}"
+puts "Created #{cracked_file_name} with the cracked key #{key} and date #{date}"
