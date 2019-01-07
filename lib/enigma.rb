@@ -4,7 +4,7 @@ require_relative 'key_generator'
 require_relative 'code_cracker'
 
 class Enigma
-  def encrypt(message, key = KeyGenerator.generate, date = KeyGenerator.generate_date)
+  def encrypt(message, key = generate_key, date = generate_date)
     {
       encryption: Encryptor.encrypt(message, key, date),
       key: key,
@@ -12,7 +12,7 @@ class Enigma
     }
   end
 
-  def decrypt(encryption, key, date = KeyGenerator.generate_date)
+  def decrypt(encryption, key, date = generate_date)
     {
       decryption: Decryptor.decrypt(encryption, key, date),
       key: key,
@@ -20,12 +20,20 @@ class Enigma
     }
   end
 
-  def crack(encryption, date = KeyGenerator.generate_date)
+  def crack(encryption, date = generate_date)
     key = CodeCracker.find_key(encryption, date)
     {
       decryption: Decryptor.decrypt(encryption, key, date),
       date: date,
       key: key
     }
+  end
+
+  def generate_key
+    KeyGenerator.generate
+  end
+
+  def generate_date
+    KeyGenerator.generate_date
   end
 end
