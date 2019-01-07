@@ -2,6 +2,10 @@ module ShiftManager
   def create_shifts(key, date)
     keys = transform_key(key)
     offsets = transform_date(date)
+    calculate_shifts(keys, offsets)
+  end
+
+  def calculate_shifts(keys, offsets)
     {
       A: keys[:A] + offsets[:A],
       B: keys[:B] + offsets[:B],
@@ -37,11 +41,17 @@ module ShiftManager
     extracted_digits.join
   end
 
+  def master_shift(message, shifts)
+    shifted_a = shift_a(message.chars, shifts)
+    shifted_b = shift_b(shifted_a.chars, shifts)
+    shifted_c = shift_c(shifted_b.chars, shifts)
+    shift_d(shifted_c.chars, shifts)
+  end
+
   def shift_a(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
       if ind % 4 == 0
-        new_index = adjust_index(char, shifts[:A])
-        char = @characters[new_index]
+        char = @characters[adjust_index(char, shifts[:A])]
       else
         char
       end
@@ -51,8 +61,7 @@ module ShiftManager
   def shift_b(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
       if (ind - 1) % 4 == 0
-        new_index = adjust_index(char, shifts[:B])
-        char = @characters[new_index]
+        char = @characters[adjust_index(char, shifts[:B])]
       else
         char
       end
@@ -62,8 +71,7 @@ module ShiftManager
   def shift_c(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
       if (ind - 2) % 4 == 0
-        new_index = adjust_index(char, shifts[:C])
-        char = @characters[new_index]
+        char = @characters[adjust_index(char, shifts[:C])]
       else
         char
       end
@@ -73,8 +81,7 @@ module ShiftManager
   def shift_d(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
       if (ind - 3) % 4 == 0
-        new_index = adjust_index(char, shifts[:D])
-        char = @characters[new_index]
+        char = @characters[adjust_index(char, shifts[:D])]
       else
         char
       end
