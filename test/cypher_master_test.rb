@@ -103,4 +103,12 @@ class CypherMasterTest < Minitest::Test
 
     assert_equal "keder ohulw", cypher_master.shift_d(message.chars, shifts)
   end
+
+  def test_it_can_perform_master_shift
+    cypher_master = CypherMaster.new
+    shifts = cypher_master.create_shifts("02715", "040895")
+    message = "hello world"
+
+    assert_equal "keder ohulw", cypher_master.master_shift(message, shifts)
+  end
 end
