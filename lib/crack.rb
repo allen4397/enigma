@@ -8,24 +8,24 @@ enigma = Enigma.new
 # Next taking arguments from the command line and
 # setting them as files/variables that can be accessed
 
-ARGV == ["encrypted_file", "decrypted_file", "key", "date"]
+ARGV == ["encrypted_file", "cracked_file", "date"]
 encrypted_file = File.open(ARGV[0], "r")
-decrypted_file = File.open(ARGV[1], "w")
-key = ARGV[2]
-date = ARGV[3]
+cracked_file = File.open(ARGV[1], "w")
+date = ARGV[2]
 
-# Pulling out the encryption and decrypting it
+# Pulling out the encryption and cracking it
 
 encryption = encrypted_file.read.chomp
-decryption = enigma.decrypt(encryption, key, date)
+crack = enigma.crack(encryption, date)
 
 # Writing decrypted message in the file
 
-decrypted_file.write(decryption[:decryption])
+cracked_file.write(crack[:decryption])
 
 # Saving the file name to local variable
 # for string concatenation
 
-decrypted_file_name = ARGV[1]
+cracked_file_name = ARGV[1]
+key = crack[:key]
 
-puts "Created #{decrypted_file_name} with the key #{key} and date #{date}"
+puts "Created #{cracked_file_name} with the key #{key} and date #{date}"
