@@ -28,4 +28,4 @@ decrypted_file.write(decryption[:decryption])
 
 decrypted_file_name = ARGV[1]
 
-p "Created #{decrypted_file_name} with the key #{key} and date #{date}"
+puts "Created #{decrypted_file_name} with the key #{key} and date #{date}"

@@ -28,4 +28,4 @@ encrypted_file_name = ARGV[1]
 key = encryption[:key]
 date = encryption[:date]
 
-p "Created #{encrypted_file_name} with the key #{key} and date #{date}"
+puts "Created #{encrypted_file_name} with the key #{key} and date #{date}"
