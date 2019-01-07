@@ -21,7 +21,8 @@ class KeyGeneratorTest < Minitest::Test
     actual = KeyGenerator.generate_date
 
     assert_instance_of String, actual
-    assert_equal "010", actual[0..2]
+    assert_equal "0", actual[0]
+    assert_equal "01", actual[2..3]
     assert_equal "19", actual[4..5]
   end
 end

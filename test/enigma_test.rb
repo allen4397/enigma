@@ -77,4 +77,21 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, enigma.crack("vjqtbeaweqihssi", "291018")
   end
+
+  def test_it_can_crack_an_encryption_with_todays_date
+    skip
+    enigma = Enigma.new
+
+    expected = {
+      decryption: "hello world end",
+      date: "070119"
+    }
+
+    actual = enigma.crack("vjqtbeaweqihssi")
+
+    assert_equal expected[:decryption], actual[:decryption]
+    assert_equal expected[:date], actual[:date]
+    assert_equal 5, actual[:key].length
+    assert_equal String, actual[:key].class
+  end
 end

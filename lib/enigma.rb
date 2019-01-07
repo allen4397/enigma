@@ -1,6 +1,7 @@
 require_relative 'encryptor'
 require_relative 'decryptor'
 require_relative 'key_generator'
+require_relative 'code_cracker'
 
 class Enigma
   def encrypt(message, key = KeyGenerator.generate, date = KeyGenerator.generate_date)
@@ -19,7 +20,7 @@ class Enigma
     }
   end
 
-  def crack(encryption, date)
+  def crack(encryption, date = KeyGenerator.generate_date)
     key = CodeCracker.find_key(encryption, date)
     {
       decryption: Decryptor.decrypt(encryption, key, date),
