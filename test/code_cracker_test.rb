@@ -15,4 +15,10 @@ class CodeCrackerTest < Minitest::Test
 
     assert_equal "08304", actual
   end
+
+  def test_it_can_perform_a_quick_crack
+    code_cracker = CodeCracker.new
+
+    assert_equal "08304", code_cracker.quick_crack("vjqtbeaweqihssi", "291018")
+  end
 end
