@@ -16,7 +16,7 @@ date = ARGV[3]
 
 # Pulling out the encryption and decrypting it
 
-encryption = encrypted_file.read.chomp
+encryption = encrypted_file.read.chomp.downcase
 decryption = enigma.decrypt(encryption, key, date)
 
 # Writing decrypted message in the file
