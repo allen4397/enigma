@@ -8,7 +8,7 @@ module ShiftManager
 
   def shift_a(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
-      if ind % 4 == 0
+      if ind % 4 == 0 && @characters.include?(char)
         char = @characters[adjust_index(char, shifts[:A])]
       else
         char
@@ -18,7 +18,7 @@ module ShiftManager
 
   def shift_b(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
-      if (ind - 1) % 4 == 0
+      if (ind - 1) % 4 == 0 && @characters.include?(char)
         char = @characters[adjust_index(char, shifts[:B])]
       else
         char
@@ -28,7 +28,7 @@ module ShiftManager
 
   def shift_c(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
-      if (ind - 2) % 4 == 0
+      if (ind - 2) % 4 == 0 && @characters.include?(char)
         char = @characters[adjust_index(char, shifts[:C])]
       else
         char
@@ -38,7 +38,7 @@ module ShiftManager
 
   def shift_d(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
-      if (ind - 3) % 4 == 0
+      if (ind - 3) % 4 == 0 && @characters.include?(char)
         char = @characters[adjust_index(char, shifts[:D])]
       else
         char
