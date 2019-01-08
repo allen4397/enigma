@@ -4,10 +4,7 @@ class Decryptor < CypherMaster
   def self.decrypt(encryption, key, date)
     decryptor = Decryptor.new
     shifts = decryptor.create_shifts(key, date)
-    shifted_a = decryptor.shift_a(encryption.chars, shifts)
-    shifted_b = decryptor.shift_b(shifted_a.chars, shifts)
-    shifted_c = decryptor.shift_c(shifted_b.chars, shifts)
-    decryptor.shift_d(shifted_c.chars, shifts)
+    decryptor.master_shift(encryption, shifts)
   end
 
   def adjust_index(char, shift)

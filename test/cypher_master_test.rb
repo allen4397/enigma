@@ -53,6 +53,22 @@ class CypherMasterTest < Minitest::Test
   def test_it_can_synthesize_final_shifts_from_keys_and_offsets
     cypher_master = CypherMaster.new
 
+    keys = cypher_master.transform_key("02715")
+    offsets = cypher_master.transform_date("040895")
+
+    expected = {
+      A: 3,
+      B: 27,
+      C: 73,
+      D: 20
+    }
+
+    assert_equal expected, cypher_master.calculate_shifts(keys, offsets)
+  end
+
+  def test_it_can_create_shifts
+    cypher_master = CypherMaster.new
+
     expected = {
       A: 3,
       B: 27,
@@ -102,5 +118,13 @@ class CypherMasterTest < Minitest::Test
     message = "kedlr ooulw"
 
     assert_equal "keder ohulw", cypher_master.shift_d(message.chars, shifts)
+  end
+
+  def test_it_can_perform_master_shift
+    cypher_master = CypherMaster.new
+    shifts = cypher_master.create_shifts("02715", "040895")
+    message = "hello world"
+
+    assert_equal "keder ohulw", cypher_master.master_shift(message, shifts)
   end
 end
