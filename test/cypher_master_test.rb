@@ -1,6 +1,7 @@
 require './test/test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'mocha/minitest'
 require './lib/cypher_master'
 
 class CypherMasterTest < Minitest::Test
@@ -13,7 +14,7 @@ class CypherMasterTest < Minitest::Test
   def test_it_starts_with_array_of_characters_of_alphabet
     cypher_master = CypherMaster.new
 
-    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+    expected = ("a".."z").to_a << " "
 
     assert_equal expected, cypher_master.characters
   end
@@ -80,10 +81,10 @@ class CypherMasterTest < Minitest::Test
   end
 
   def test_it_can_adjust_index_to_fit_parameters
-    encryptor = Encryptor.new
-    shifts = encryptor.create_shifts("02715", "040895")
+    cypher_master = CypherMaster.new
+    shifts = cypher_master.create_shifts("02715", "040895")
 
-    assert_equal 2, encryptor.adjust_index(" ", shifts[:A])
+    assert_equal 2, cypher_master.adjust_index(" ", shifts[:A])
   end
 
   def test_it_can_shift_a_characters

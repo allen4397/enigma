@@ -19,10 +19,9 @@ class KeyGeneratorTest < Minitest::Test
 
   def test_it_can_generate_todays_date
     actual = KeyGenerator.generate_date
+    mock_1 = mock
+    mock_1.stubs(:date).returns(Date.today.strftime("%d%m%y"))
 
-    assert_instance_of String, actual
-    assert_equal "0", actual[0]
-    assert_equal "01", actual[2..3]
-    assert_equal "19", actual[4..5]
+    assert_equal mock_1.date, actual
   end
 end
