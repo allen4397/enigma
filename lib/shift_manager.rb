@@ -38,7 +38,7 @@ module ShiftManager
 
   def shift_d(message_characters, shifts)
     message_characters.map.with_index do |char, ind|
-      if (ind - 3) % 4 == 0 && @characters.include?(char)
+      if (ind - 3) % 4 == 0 && @characters.include?(char) 
         char = @characters[adjust_index(char, shifts[:D])]
       else
         char
