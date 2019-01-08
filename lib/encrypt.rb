@@ -14,7 +14,7 @@ encrypted_file = File.open(ARGV[1], "w")
 
 # Pulling out the message and encrypting it
 
-message = message_file.read.chomp
+message = message_file.read.chomp.downcase
 encryption = enigma.encrypt(message)
 
 # Writing encrypted message in the file
